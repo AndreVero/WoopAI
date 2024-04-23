@@ -8,6 +8,7 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.9.0"
 generativeai = "0.4.0"
+secretsGradle = "2.0.1"
 composeBom = "2023.08.00"
 
 [libraries]
@@ -30,4 +31,5 @@ generativeai = { group = "com.google.ai.client.generativeai", name = "generative
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+secretsGradlePlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsGradle" }
 
