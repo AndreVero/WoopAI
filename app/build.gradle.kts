@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.secretsGradlePlugin)
+    alias(libs.plugins.daggerHilt)
 }
 
 android {
@@ -56,6 +57,12 @@ android {
 
 dependencies {
     implementation(libs.generativeai)
+    implementation(libs.hiltAndroid)
+    implementation(libs.hiltCompiler)
+    implementation(libs.hiltAndroidCompiler)
+    implementation(libs.hiltNavigationCompose)
+    implementation(libs.androidx.compose.navigation)
+    implementation(libs.androidx.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
