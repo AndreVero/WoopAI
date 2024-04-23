@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.secretsGradlePlugin)
     alias(libs.plugins.daggerHilt)
+    kotlin("kapt")
 }
 
 android {
@@ -58,12 +59,15 @@ android {
 dependencies {
     implementation(libs.generativeai)
     implementation(libs.hiltAndroid)
-    implementation(libs.hiltCompiler)
+    kapt(libs.hiltCompiler)
     implementation(libs.hiltAndroidCompiler)
     implementation(libs.hiltNavigationCompose)
     implementation(libs.androidx.compose.navigation)
     implementation(libs.androidx.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.room)
+    kapt(libs.roomCompiler)
+    implementation(libs.roomKtx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
