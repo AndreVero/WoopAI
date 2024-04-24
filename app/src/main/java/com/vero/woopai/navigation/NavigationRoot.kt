@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.vero.woopai.features.home.presentation.HomeScreen
 
 @Composable
 fun NavigationRoot(
@@ -22,7 +23,7 @@ fun NavigationRoot(
         composable(
             route = Screens.HOME,
         ) {
-            Text(text = "HOME")
+            HomeScreen(openHistoryScreen = { navHostController.navigate(Screens.HISTORY) })
         }
         composable(
             route = Screens.HISTORY,
