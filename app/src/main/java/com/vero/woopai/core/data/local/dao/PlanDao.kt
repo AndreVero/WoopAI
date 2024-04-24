@@ -10,10 +10,10 @@ import com.vero.woopai.core.data.local.entity.PlanEntity
 @Dao
 interface PlanDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTasks(vararg plans: PlanEntity)
+    suspend fun insertPlans(vararg plans: PlanEntity)
 
     @Delete
-    suspend fun deleteTasks(vararg plans: PlanEntity)
+    suspend fun deletePlans(vararg plans: PlanEntity)
 
     @Query("""
         SELECT *
