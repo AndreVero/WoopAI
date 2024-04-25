@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WoopAI</string>
+    <string name="default_error">Ooops, something went wrong, please try again later.</string>
 </resources>
