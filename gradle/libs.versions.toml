@@ -15,6 +15,7 @@ viewModelCompose = "2.7.0"
 daggerHilt = "2.48"
 daggerHiltCompose = "1.1.0"
 room = "2.6.1"
+lottie = "6.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +42,7 @@ hiltCompiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = 
 room = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
 roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "room"}
 roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room"}
+lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -24,9 +24,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.airbnb.lottie.compose.LottieAnimation
 import com.vero.woopai.R
 import com.vero.woopai.core.presentation.components.DefaultButton
 import com.vero.woopai.core.presentation.components.PlanComponent
+import com.vero.woopai.features.home.presentation.components.EmptyPlansAnimation
 import com.vero.woopai.ui.theme.AppBarStyle
 import com.vero.woopai.ui.theme.BackgroundColor
 import com.vero.woopai.ui.theme.ButtonStyle
@@ -67,15 +69,19 @@ fun HomeScreen(
                 }
             }
         )
-        LazyColumn(
-            modifier = Modifier
-                .padding(8.dp)
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(state.plans) { plan ->
-                PlanComponent(plan = plan)
+        if (state.plans.isNotEmpty()) {
+            LazyColumn(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .weight(1f),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(state.plans) { plan ->
+                    PlanComponent(plan = plan)
+                }
             }
+        } else {
+            EmptyPlansAnimation(modifier = Modifier.weight(1f))
         }
         DefaultButton(
             onClick = {},
