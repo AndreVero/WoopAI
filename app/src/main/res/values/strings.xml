@@ -13,4 +13,6 @@
     <string name="add_wish_hint">Write or say your wish</string>
     <string name="save_plans">Save plans</string>
     <string name="make_new_suggestions">Make new suggestions</string>
+    <string name="history">History</string>
+    <string name="new_plan">New plan</string>
 </resources>

@@ -33,7 +33,7 @@ fun DefaultButton(
         )
     ) {
         Text(
-            text = stringResource(id = text),
+            text = stringResource(id = text).uppercase(),
             color = TextColor,
             style = ButtonStyle
         )

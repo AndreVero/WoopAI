@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.vero.woopai.features.history.presentation.HistoryScreen
 import com.vero.woopai.features.home.presentation.HomeScreen
 import com.vero.woopai.features.info.presentation.InfoScreen
 
@@ -32,7 +33,7 @@ fun NavigationRoot(
         composable(
             route = Screens.HISTORY,
         ) {
-            Text(text = "HISTORY")
+            HistoryScreen(navigateBack = { navHostController.popBackStack()})
         }
         composable(
             route = Screens.INFO,
@@ -41,11 +42,6 @@ fun NavigationRoot(
                 openHomeScreen = { navHostController.navigate(Screens.HOME) },
                 navigateBack = { navHostController.popBackStack()}
             )
-        }
-        composable(
-            route = Screens.PLAN,
-        ) {
-            Text(text = "PLAN")
         }
     }
 
