@@ -5,4 +5,5 @@ sealed interface ScreenState {
     object Obstacle: ScreenState
     object Outcome: ScreenState
     object Plan: ScreenState
+    object Loading: ScreenState
 }

@@ -13,7 +13,7 @@ import java.time.LocalTime
 class PlanRepositoryImpl(private val dao: PlanDao) : PlanRepository {
 
     override suspend fun insertPlan(plan: PlanModel) {
-        dao.deletePlans(plan.toPlanEntity())
+        dao.insertPlans(plan.toPlanEntity())
     }
 
     override suspend fun deletePlan(plan: PlanModel) {

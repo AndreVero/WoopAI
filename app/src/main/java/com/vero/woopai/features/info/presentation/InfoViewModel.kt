@@ -30,18 +30,25 @@ class InfoViewModel @Inject constructor(
 
     fun onEvent(event: InfoEvent) {
         when (event) {
-            InfoEvent.GetPlan -> getPlans()
-            InfoEvent.Next -> openNextScreen()
+            InfoEvent.GeneratePlans -> getPlans()
+            InfoEvent.SaveText -> openNextScreen()
+            is InfoEvent.UpdateText -> updateText(event.text)
+            InfoEvent.SavePlans -> savePlanModel()
         }
+    }
+
+    private fun updateText(text: String) {
+        state = state.copy(text = text)
     }
 
     private fun getPlans() {
         viewModelScope.launch {
             getPlanSuggestionsUseCase(woopModel)
                 .onSuccess {
-                    state = state.copy(plans = it)
+                    state = state.copy(plans = it, currentScreenState = ScreenState.Plan)
                 }
                 .onFailure {
+                    state = state.copy(currentScreenState = ScreenState.Obstacle, text = woopModel.obstacle)
                     _uiEvents.send(InfoUiEvent.ShowError(R.string.default_error))
                 }
         }
@@ -68,23 +75,22 @@ class InfoViewModel @Inject constructor(
             ScreenState.Obstacle -> {
                 woopModel.obstacle = state.text
                 state = state.copy(
-                    currentScreenState = ScreenState.Plan,
+                    currentScreenState = ScreenState.Loading,
                     text = ""
                 )
+                getPlans()
             }
 
-            ScreenState.Plan -> {
-                viewModelScope.launch {
-                    savePlanModel()
-                    _uiEvents.send(InfoUiEvent.OpenHomeScreen)
-                }
-            }
+            else -> Unit
         }
     }
 
-    private suspend fun savePlanModel() {
-        state.plans.forEach { planModel ->
-            insertPlanModel(planModel)
+    private fun savePlanModel() {
+        viewModelScope.launch {
+            state.plans.forEach { planModel ->
+                insertPlanModel(planModel)
+            }
+            _uiEvents.send(InfoUiEvent.OpenHomeScreen)
         }
     }
 

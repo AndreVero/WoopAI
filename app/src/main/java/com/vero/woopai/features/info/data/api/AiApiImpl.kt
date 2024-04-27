@@ -1,5 +1,6 @@
 package com.vero.woopai.features.info.data.api
 
+import android.util.Log
 import com.google.ai.client.generativeai.GenerativeModel
 import com.vero.woopai.BuildConfig
 import com.vero.woopai.core.domain.model.PlanModel

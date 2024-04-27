@@ -3,5 +3,14 @@
     <string name="default_error">Ooops, something went wrong, please try again later.</string>
     <string name="continue_button">Continue</string>
     <string name="add_plan">Add new plan</string>
-    <string name="no_plans_title">No plans for today?\n(Impossible)</string>
+    <string name="no_plans_title">No plans for today?\n(Impossible!!!)</string>
+    <string name="unknown">Unknown</string>
+    <string name="add_wish_button">Add wish</string>
+    <string name="add_outcome_button">Add outcome</string>
+    <string name="add_obstacle_button">Add obstacle</string>
+    <string name="add_obstacle_hint">Write or say your obstacle</string>
+    <string name="add_outcome_hint">Write or say your outcome</string>
+    <string name="add_wish_hint">Write or say your wish</string>
+    <string name="save_plans">Save plans</string>
+    <string name="make_new_suggestions">Make new suggestions</string>
 </resources>

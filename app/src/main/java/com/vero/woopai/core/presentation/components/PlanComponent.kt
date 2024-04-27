@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import com.vero.woopai.core.domain.model.PlanModel
+import com.vero.woopai.ui.theme.TextColor
 
 @Composable
 fun PlanComponent(
@@ -37,26 +38,32 @@ fun PlanComponent(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(12.dp)
+            .padding(12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Text(
                 text = plan.title,
+                color = TextColor,
                 modifier = Modifier.align(Alignment.CenterStart)
             )
             IconButton(
-                onClick = { isDescriptionVisible = true },
+                onClick = { isDescriptionVisible = !isDescriptionVisible },
                 modifier = Modifier.align(Alignment.CenterEnd)
             ) {
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowDown,
                     contentDescription = "Arrow Down",
-                    modifier = Modifier.rotate(rotationAnimation)
+                    tint = TextColor,
+                    modifier = Modifier.rotate(rotationAnimation),
                 )
             }
         }
         AnimatedVisibility(visible = isDescriptionVisible) {
-            Text(text = plan.description)
+            Text(
+                text = plan.description,
+                color = TextColor,
+            )
         }
     }
 }

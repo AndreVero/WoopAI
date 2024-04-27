@@ -4,7 +4,7 @@ import com.vero.woopai.core.domain.model.PlanModel
 
 object AiResponseParser {
 
-    fun responseToPlanModel(response: String?) : List<PlanModel> {
+    fun responseToPlanModel(response: String?): List<PlanModel> {
         return emptyList()
     }
 
