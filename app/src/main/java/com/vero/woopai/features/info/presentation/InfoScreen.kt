@@ -94,7 +94,9 @@ fun InfoScreen(
                     screenState = state.currentScreenState,
                     onValueChanged = { viewModel.onEvent(InfoEvent.UpdateText(it)) },
                     onValueSaved = { viewModel.onEvent(InfoEvent.SaveText) },
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    startSpeechRecognition = { viewModel.onEvent(InfoEvent.StartSpeechToText) },
+                    speechButtonColor = state.speechButtonColor
                 )
             }
         }

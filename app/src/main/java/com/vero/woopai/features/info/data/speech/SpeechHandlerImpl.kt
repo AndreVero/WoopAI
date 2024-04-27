@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import android.util.Log
 import com.vero.woopai.features.info.domain.speech.SpeechHandler
 import com.vero.woopai.features.info.domain.speech.SpeechRecognizerListener
 import java.util.Locale
@@ -38,7 +39,9 @@ class SpeechHandlerImpl(private val context: Context) : SpeechHandler {
 
             override fun onEndOfSpeech() {}
 
-            override fun onError(error: Int) {}
+            override fun onError(error: Int) {
+                Log.d("Error in SpeechRecognizer, code:", error.toString())
+            }
 
             override fun onResults(results: Bundle?) {
                 val data = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)

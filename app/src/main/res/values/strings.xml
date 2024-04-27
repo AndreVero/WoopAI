@@ -15,4 +15,5 @@
     <string name="make_new_suggestions">Make new suggestions</string>
     <string name="history">History</string>
     <string name="new_plan">New plan</string>
+    <string name="gemini_suggestions">Here is Gemini plan suggestions!</string>
 </resources>
