@@ -65,10 +65,11 @@ class InfoViewModel @Inject constructor(
     }
 
     private fun getPlans() {
+        state = state.copy(currentScreenState = ScreenState.Loading)
         viewModelScope.launch {
             getPlanSuggestionsUseCase(woopModel)
                 .onSuccess {
-                    state = state.copy(plans = it, currentScreenState = ScreenState.Plan)
+                    state = state.copy(plan = it, currentScreenState = ScreenState.Plan)
                 }
                 .onFailure {
                     state = state.copy(
@@ -113,9 +114,7 @@ class InfoViewModel @Inject constructor(
 
     private fun savePlanModel() {
         viewModelScope.launch {
-            state.plans.forEach { planModel ->
-                insertPlanModel(planModel)
-            }
+            state.plan?.let { insertPlanModel(it) }
             _uiEvents.send(InfoUiEvent.OpenHomeScreen)
         }
     }

@@ -6,7 +6,7 @@ import com.vero.woopai.ui.theme.BlackTextColor
 
 data class InfoState(
     val currentScreenState: ScreenState = ScreenState.Wish,
-    val plans: List<PlanModel> = emptyList(),
+    val plan: PlanModel? = null,
     val text: String = "",
     val speechButtonColor: Color = BlackTextColor,
 )

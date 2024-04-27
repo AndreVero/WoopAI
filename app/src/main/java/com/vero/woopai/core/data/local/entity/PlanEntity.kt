@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey
 data class PlanEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val title: String,
     val description: String,
     val time: Long
 )

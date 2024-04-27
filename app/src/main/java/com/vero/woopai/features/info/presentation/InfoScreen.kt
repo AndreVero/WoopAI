@@ -84,7 +84,7 @@ fun InfoScreen(
         ) { screen ->
             when (screen) {
                 ScreenState.Plan -> PlansComponent(
-                    plans = state.plans,
+                    plan = state.plan,
                     makeNewSuggestions = { viewModel.onEvent(InfoEvent.GeneratePlans) },
                     savePlans = { viewModel.onEvent(InfoEvent.SavePlans) }
                 )

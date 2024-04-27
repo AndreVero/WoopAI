@@ -42,11 +42,13 @@ fun PlanComponent(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
-            Text(
-                text = plan.title,
-                color = TextColor,
-                modifier = Modifier.align(Alignment.CenterStart)
-            )
+            if (!isDescriptionVisible) {
+                Text(
+                    text = plan.description,
+                    maxLines = 2,
+                    color = TextColor,
+                )
+            }
             IconButton(
                 onClick = { isDescriptionVisible = !isDescriptionVisible },
                 modifier = Modifier.align(Alignment.CenterEnd)

@@ -9,7 +9,7 @@ class GetPlanSuggestionsUseCase @Inject constructor(
     private val aiApi: AiApi
 ) {
 
-    suspend operator fun invoke(woopModel: WoopModel) : Result<List<PlanModel>> {
+    suspend operator fun invoke(woopModel: WoopModel) : Result<PlanModel> {
         return aiApi.getPlanSuggestion(woopModel)
     }
 

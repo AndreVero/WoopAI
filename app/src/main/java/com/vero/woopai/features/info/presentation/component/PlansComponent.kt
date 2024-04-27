@@ -21,7 +21,7 @@ import com.vero.woopai.ui.theme.TextColor
 
 @Composable
 fun PlansComponent(
-    plans: List<PlanModel>,
+    plan: PlanModel?,
     savePlans: () -> Unit,
     makeNewSuggestions: () -> Unit,
 ) {
@@ -36,12 +36,10 @@ fun PlansComponent(
             )
             Spacer(modifier = Modifier.height(16.dp))
         }
-        items(
-            items = plans,
-            key = { it.id }
-        ) {
-            PlanComponent(plan = it)
+        plan?.let {
+            item { PlanComponent(plan = plan) }
         }
+
         item {
             DefaultButton(
                 onClick = savePlans,
