@@ -4,6 +4,14 @@ package com.vero.woopai.features.info.presentation
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -79,7 +87,28 @@ fun InfoScreen(
         )
         AnimatedContent(
             targetState = state.currentScreenState,
-            label = "screen_animation"
+            label = "screen_animation",
+            transitionSpec = {
+                (fadeIn(animationSpec = tween(220, delayMillis = 90)) +
+                        slideInHorizontally(
+                            initialOffsetX = { size -> size * 2 },
+                            animationSpec = tween(
+                                durationMillis = 300,
+                                easing = LinearEasing
+                            )
+                        )
+                )
+                    .togetherWith(
+                        fadeOut(animationSpec = tween(100)) +
+                                slideOutHorizontally(
+                                    targetOffsetX = { size -> -(size * 2) },
+                                    animationSpec = tween(
+                                        durationMillis = 300,
+                                        easing = LinearEasing
+                                    )
+                                )
+                    )
+            }
         ) { screen ->
             when (screen) {
                 ScreenState.Plan -> PlanSuggestionComponent(
@@ -87,6 +116,7 @@ fun InfoScreen(
                     makeNewSuggestions = { viewModel.onEvent(InfoEvent.GeneratePlans) },
                     savePlans = { viewModel.onEvent(InfoEvent.SavePlans) }
                 )
+
                 ScreenState.Loading -> LoadingAnimation()
                 else -> InfoComponent(
                     value = state.text,
