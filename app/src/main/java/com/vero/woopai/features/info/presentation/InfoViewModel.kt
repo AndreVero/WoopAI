@@ -37,11 +37,15 @@ class InfoViewModel @Inject constructor(
         speechHandler.init()
         speechHandler.setListener(object : SpeechRecognizerListener {
             override fun onResult(result: String) {
-                state = state.copy(text = result, speechButtonColor = BlackTextColor)
+                state = state.copy(text = result, isMicWorking = false)
+            }
+
+            override fun onStop() {
+                state = state.copy(isMicWorking = false)
             }
 
             override fun onReadyForSpeech() {
-                state = state.copy(speechButtonColor = Color.Green)
+                state = state.copy(isMicWorking = true)
             }
         })
     }

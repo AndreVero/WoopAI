@@ -37,7 +37,9 @@ class SpeechHandlerImpl(private val context: Context) : SpeechHandler {
 
             override fun onBufferReceived(buffer: ByteArray?) {}
 
-            override fun onEndOfSpeech() {}
+            override fun onEndOfSpeech() {
+                listener?.onStop()
+            }
 
             override fun onError(error: Int) {
                 Log.d("Error in SpeechRecognizer, code:", error.toString())

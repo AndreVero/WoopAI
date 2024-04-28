@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,7 +19,7 @@ import com.vero.woopai.ui.theme.ButtonStyle
 import com.vero.woopai.ui.theme.TextColor
 
 @Composable
-fun PlansComponent(
+fun PlanSuggestionComponent(
     plan: PlanModel?,
     savePlans: () -> Unit,
     makeNewSuggestions: () -> Unit,
@@ -37,7 +36,13 @@ fun PlansComponent(
             Spacer(modifier = Modifier.height(16.dp))
         }
         plan?.let {
-            item { PlanComponent(plan = plan) }
+            item {
+                Text(
+                    text = plan.description,
+                    color = TextColor,
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+            }
         }
 
         item {

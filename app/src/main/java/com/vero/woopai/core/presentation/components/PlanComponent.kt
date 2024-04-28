@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import com.vero.woopai.core.domain.model.PlanModel
+import com.vero.woopai.ui.theme.DefaultText
 import com.vero.woopai.ui.theme.TextColor
 
 @Composable
@@ -65,6 +66,7 @@ fun PlanComponent(
             Text(
                 text = plan.description,
                 color = TextColor,
+                style = DefaultText
             )
         }
     }

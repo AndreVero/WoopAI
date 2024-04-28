@@ -13,6 +13,7 @@ interface SpeechHandler {
 }
 
 interface SpeechRecognizerListener {
+    fun onStop()
 
     fun onResult(result: String)
 
