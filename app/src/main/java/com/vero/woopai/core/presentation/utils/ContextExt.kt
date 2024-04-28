@@ -1,4 +1,4 @@
-package com.vero.woopai.core.utils
+package com.vero.woopai.core.presentation.utils
 
 import android.Manifest
 import android.content.Context

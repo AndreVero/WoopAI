@@ -4,7 +4,9 @@ package com.vero.woopai.features.history.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -32,7 +34,9 @@ fun HistoryScreen(
     navigateBack: () -> Unit,
     viewModel: HistoryViewModel = hiltViewModel()
 ) {
-    Column(modifier = Modifier.fillMaxSize().background(BackgroundColor)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(BackgroundColor)) {
         CenterAlignedTopAppBar(
             title = {
                 Text(
@@ -58,9 +62,10 @@ fun HistoryScreen(
         LazyColumn(modifier = Modifier.padding(16.dp)) {
             items(
                 items = viewModel.state.plans,
-                key = { it.id }
+                key = { it.id },
             ) {
                 PlanComponent(plan = it)
+                Spacer(modifier = Modifier.height(8.dp))
             }
         }
     }

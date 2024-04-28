@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import com.vero.woopai.R
-import com.vero.woopai.core.utils.hasAudioPermissions
+import com.vero.woopai.core.presentation.utils.hasAudioPermissions
 import com.vero.woopai.ui.theme.BlackTextColor
 
 @Composable
