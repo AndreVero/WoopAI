@@ -20,8 +20,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -33,6 +37,8 @@ import com.vero.woopai.features.info.presentation.ScreenState
 import com.vero.woopai.features.info.presentation.utils.ScreenStateToTextParser
 import com.vero.woopai.ui.theme.BlackTextColor
 import com.vero.woopai.ui.theme.TextFieldBackground
+import kotlinx.coroutines.delay
+import java.lang.IllegalStateException
 
 @Composable
 fun InfoComponent(
@@ -54,6 +60,17 @@ fun InfoComponent(
         onResult = { startSpeechRecognition() }
     )
 
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(key1 = Unit) {
+        delay(200)
+        try {
+            focusRequester.requestFocus()
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        }
+    }
+
     Column(modifier = modifier.padding(16.dp)) {
         Box {
             TextField(
@@ -62,7 +79,8 @@ fun InfoComponent(
                 minLines = 5,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp, horizontal = 8.dp),
+                    .padding(vertical = 16.dp, horizontal = 8.dp)
+                    .focusRequester(focusRequester),
                 placeholder = {
                     Text(
                         text = stringResource(id = hint),
@@ -79,7 +97,7 @@ fun InfoComponent(
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedTextColor = BlackTextColor,
                     unfocusedTextColor = BlackTextColor
-                )
+                ),
             )
             Box(modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 16.dp, end = 16.dp)) {
                 IconButton(onClick = {
