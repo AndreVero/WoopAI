@@ -92,7 +92,7 @@ fun InfoComponent(
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(bottom = 16.dp, end = 16.dp)
+                    .padding(bottom = 16.dp, end = 8.dp)
             ) {
                 AudioComponent(
                     isMicWorking = isMicWorking,

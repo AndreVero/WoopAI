@@ -22,8 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.vero.woopai.R
+import com.vero.woopai.core.presentation.components.LoadingAnimation
 import com.vero.woopai.features.info.presentation.component.InfoComponent
-import com.vero.woopai.features.info.presentation.component.LoadingComponent
 import com.vero.woopai.features.info.presentation.component.PlanSuggestionComponent
 import com.vero.woopai.ui.theme.AppBarStyle
 import com.vero.woopai.ui.theme.BackgroundColor
@@ -87,7 +87,7 @@ fun InfoScreen(
                     makeNewSuggestions = { viewModel.onEvent(InfoEvent.GeneratePlans) },
                     savePlans = { viewModel.onEvent(InfoEvent.SavePlans) }
                 )
-                ScreenState.Loading -> LoadingComponent()
+                ScreenState.Loading -> LoadingAnimation()
                 else -> InfoComponent(
                     value = state.text,
                     screenState = state.currentScreenState,
