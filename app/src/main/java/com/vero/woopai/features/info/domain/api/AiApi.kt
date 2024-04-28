@@ -11,11 +11,11 @@ interface AiApi {
 
     companion object {
         fun getWoopRequest(woop: WoopModel) : String {
-            return "I'm using WOOP system to improve my discipline and time managment." +
-                    "Build a practical plan according to WOOP rules for this Wish : ${woop.wish} " +
-                    "this Outcome : ${woop.outcome}, and " +
-                    "this Obstacle : ${woop.obstacle} " +
-                    "Write three if-then plans of how to fix my problem."
+            return "I'm using the WOOP system to improve my discipline and time management." +
+                    "Build a practical plan according to WOOP rules for this Wish: ${woop.wish}," +
+                    "this Outcome: ${woop.outcome}, and" +
+                    "this Obstacle: ${woop.obstacle}." +
+                    "Write three if-then plans on how to fix my problem."
         }
     }
 }

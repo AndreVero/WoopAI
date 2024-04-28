@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">WoopAI</string>
-    <string name="default_error">Ooops, something went wrong, please try again later.</string>
+    <string name="default_error">Oops, something went wrong, please try again later.</string>
     <string name="continue_button">Continue</string>
     <string name="add_plan">Add new plan</string>
     <string name="no_plans_title">No plans for today?\n(Impossible!!!)</string>
@@ -16,5 +16,5 @@
     <string name="history">History</string>
     <string name="new_plan">New plan</string>
     <string name="gemini_suggestions">Here is Gemini plan suggestions!</string>
-    <string name="loading">Gemini is thinking...</string>
+    <string name="loading">Gemini is thinking…</string>
 </resources>
