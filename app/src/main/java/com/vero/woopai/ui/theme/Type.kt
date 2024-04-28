@@ -42,8 +42,8 @@ val ButtonStyle = TextStyle(
 
 val DefaultText = TextStyle(
     fontFamily = Cartline,
-    fontWeight = FontWeight.Normal,
-    fontSize = 14.sp
+    fontWeight = FontWeight.Medium,
+    fontSize = 16.sp
 )
 
 val AppBarStyle = TextStyle(

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -46,8 +47,6 @@ fun InfoComponent(
     val hint = ScreenStateToTextParser.screenStateToHint(screenState)
     val buttonText = ScreenStateToTextParser.screenStateToButtonText(screenState)
 
-
-
     val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(key1 = Unit) {
@@ -72,8 +71,8 @@ fun InfoComponent(
                 placeholder = {
                     Text(
                         text = stringResource(id = hint),
-                        color = BlackTextColor,
-                        style = DefaultText
+                        color = BlackTextColor.copy(alpha = 0.5f),
+                        style = DefaultText,
                     )
                 },
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
