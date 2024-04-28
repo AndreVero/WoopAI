@@ -1,5 +1,8 @@
 package com.vero.woopai.features.info.presentation.component
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,10 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.vero.woopai.core.presentation.components.DefaultButton
+import com.vero.woopai.core.utils.hasAudioPermissions
 import com.vero.woopai.features.info.presentation.ScreenState
 import com.vero.woopai.features.info.presentation.utils.ScreenStateToTextParser
 import com.vero.woopai.ui.theme.BlackTextColor
@@ -40,8 +45,14 @@ fun InfoComponent(
     modifier: Modifier = Modifier
 ) {
 
+    val context = LocalContext.current
     val hint = ScreenStateToTextParser.screenStateToHint(screenState)
     val buttonText = ScreenStateToTextParser.screenStateToButtonText(screenState)
+
+    val launcherAudioPermission = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = { startSpeechRecognition() }
+    )
 
     Column(modifier = modifier.padding(16.dp)) {
         Box {
@@ -71,7 +82,11 @@ fun InfoComponent(
                 )
             )
             Box(modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 16.dp, end = 16.dp)) {
-                IconButton(onClick = startSpeechRecognition) {
+                IconButton(onClick = {
+                    if (context.hasAudioPermissions())
+                        startSpeechRecognition()
+                    else launcherAudioPermission.launch(Manifest.permission.RECORD_AUDIO)
+                }) {
                     Icon(
                         imageVector = Icons.Default.Call,
                         contentDescription = "Start speech to text recognition",

@@ -3,6 +3,8 @@
 package com.vero.woopai.features.info.presentation
 
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -36,7 +38,6 @@ fun InfoScreen(
     openHomeScreen: () -> Unit,
     navigateBack: () -> Unit,
 ) {
-
     val context = LocalContext.current
     val state = viewModel.state
 
